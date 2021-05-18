@@ -3,14 +3,34 @@
 
 #include <iostream>
 
+#define PI 3.141592653589793238462
+
 namespace rbt
 {
-    class Robot
+    class Matriz4x4
+    {
+    private:
+        int n, m;
+        float **M;
+    public:
+        Matriz4x4();
+        ~Matriz4x4();
+        Matriz4x4 operator+ (Matriz4x4 obj1);
+        Matriz4x4 operator- (Matriz4x4 obj1);
+        Matriz4x4 operator= (Matriz4x4 obj1);
+        Matriz4x4 operator* (Matriz4x4 obj1);
+        friend std::ostream & operator << (std::ostream &o, const Matriz4x4 &mat);
+        friend std::istream & operator >> (std::istream &i, const Matriz4x4 &mat);
+    };
+
+    class Robot: public Matriz4x4
     {
     protected:
         int numEslabones;
-        float tamanio1, tamanio2, tamanio3, tamanio4, tamanio5, tamanio6;
+        float L1, L2, L3, L4, L5, L6;
         float pesoTotal;
+        float M_DH[6][6][6];
+
         std::string color;
         std::string material;
     public:
@@ -31,8 +51,8 @@ namespace rbt
         void dibujar();
 
 
-    };
 
+    };
 }
 
 #endif

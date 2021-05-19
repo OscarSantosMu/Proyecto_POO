@@ -12,6 +12,7 @@ namespace rbt
     private:
         int n, m;
         float **M;
+        static int mat;
     public:
         Matriz4x4();
         ~Matriz4x4();
@@ -19,17 +20,19 @@ namespace rbt
         Matriz4x4 operator- (Matriz4x4 obj1);
         Matriz4x4 operator= (Matriz4x4 obj1);
         Matriz4x4 operator* (Matriz4x4 obj1);
+        Matriz4x4 operator= (float DH[6][6][6]);
         friend std::ostream & operator << (std::ostream &o, const Matriz4x4 &mat);
         friend std::istream & operator >> (std::istream &i, const Matriz4x4 &mat);
     };
 
-    class Robot: public Matriz4x4
+    class Robot
     {
     protected:
         int numEslabones;
         float L1, L2, L3, L4, L5, L6;
         float pesoTotal;
         float M_DH[6][6][6];
+        Matriz4x4 T01,T12,T23,T34,T45,T56;
 
         std::string color;
         std::string material;

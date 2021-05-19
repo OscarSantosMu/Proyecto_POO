@@ -52,6 +52,7 @@ namespace rbt
             }
             std::cout << "\n\n\n";
         }
+
         /*
         for(int i=0;i<10;i++)
         {
@@ -61,6 +62,19 @@ namespace rbt
             0, 0, 0, 1,
         }
         */
+        std::cout << "Asignando tabla en objetos de la clase Matriz4x4" << std::endl;
+        T01 = M_DH;
+        std::cout << T01;
+        T12 = M_DH;
+        std::cout << T12;
+        T23 = M_DH;
+        std::cout << T23;
+        T34 = M_DH;
+        std::cout << T34;
+        T45 = M_DH;
+        std::cout << T45;
+        T56 = M_DH;
+        std::cout << T56;
     }
 
     Robot::Robot(int _numEslabones, float _tamanio1, float _tamanio2, float _tamanio3,float _tamanio4, float _tamanio5, float _tamanio6,
@@ -105,6 +119,8 @@ namespace rbt
         std::cout << "color = " << color << std::endl;
         std::cout << "material = " << material << std::endl;
     }
+
+    int Matriz4x4::mat = 0;
 
     Matriz4x4::Matriz4x4()
     {
@@ -185,6 +201,29 @@ namespace rbt
             }
         }
 
+        return temp;
+    }
+
+    Matriz4x4 Matriz4x4::operator =(float DH[6][6][6])
+    {
+        Matriz4x4 temp;
+
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+               M[i][j] = DH[mat][i][j];
+            }
+        }
+
+        /// Nos sirve para regresar y poder hacer múltiples igualaciones
+        //temp.n = obj1.n;
+        //temp.m = obj1.m;
+        //temp.M = obj1.M;
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+               temp.M[i][j] = DH[mat][i][j];
+            }
+        }
+        mat += 1;
         return temp;
     }
 

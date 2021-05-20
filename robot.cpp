@@ -7,19 +7,25 @@ namespace rbt
     Robot::Robot()
     {
         numEslabones = 6;
-        L1 = 290; // cm
-        L2 = 270; // cm
-        L3 = 70; // cm
-        L4 = 302; // cm
-        L5 = 0; // cm
-        L6 = 72; // cm
+        L1 = 2.90; // m
+        L2 = 2.70; // m
+        L3 = 0.70; // m
+        L4 = 3.02; // m
+        L5 = 0.0; // m
+        L6 = 0.72; // m
+        th1 = 0;
+        th2 = 0;
+        th3 = 0;
+        th4 = 0;
+        th5 = 0;
+        th6 = 0;
         pesoTotal = 2000; // kg
         color = "gris";
         material = "acero";
-        float alpha[6] = {0*PI/180, 0, -90*PI/180, 90*PI/180, -90*PI/180, 0};
-        float a[6] = {0, L2, L3, 0, 0, 0};
-        float d[6] = {L1, 0, 0, L4, 0, L5};
-        float theta[6] = {90*PI/180, 90*PI/180, 90*PI/180, 90*PI/180, 90*PI/180, 90*PI/180};
+        static float alpha[6] = {0*PI/180, 0, -90*PI/180, 90*PI/180, -90*PI/180, 0};
+        static float a[6] = {0, L2, L3, 0, 0, 0};
+        static float d[6] = {L1, 0, 0, L4, 0, L5};
+        static float theta[6] = {th1*PI/180, th2*PI/180, th3*PI/180, th4*PI/180, th5*PI/180, th6*PI/180};
 
         for(int i=0;i<6;i++)
         {
@@ -114,6 +120,13 @@ namespace rbt
 
     void Robot::setNumEslabones(float _numEslabones){numEslabones = _numEslabones;}
 
+    void Robot::setTh1(float _th1){th1 = _th1;}
+    void Robot::setTh2(float _th2){th2 = _th2;}
+    void Robot::setTh3(float _th3){th3 = _th3;}
+    void Robot::setTh4(float _th4){th4 = _th4;}
+    void Robot::setTh5(float _th5){th5 = _th5;}
+    void Robot::setTh6(float _th6){th6 = _th6;}
+
     std::string Robot::getColor(){return color;}
 
     void Robot::setColor(std::string _color){color = _color;}
@@ -121,6 +134,82 @@ namespace rbt
     std::string Robot::getMaterial(){return material;}
 
     void Robot::setMaterial(std::string _material){material = _material;}
+
+    void actualizarPosicion()
+    {
+        /*
+        theta[6] = {th1*PI/180, th2*PI/180, th3*PI/180, th4*PI/180, th5*PI/180, th6*PI/180};
+        for(int i=0;i<6;i++)
+        {
+            M_DH[i][0][0] = cos(theta[i]);
+            M_DH[i][0][1] = -sin(theta[i]);
+            M_DH[i][0][2] = 0;
+            M_DH[i][0][3] = a[i];
+            M_DH[i][1][0] = sin(theta[i])*cos(alpha[i]);
+            M_DH[i][1][1] = cos(theta[i]) *  cos(alpha[i]);
+            M_DH[i][1][2] = -sin(alpha[i]);
+            M_DH[i][1][3] = -sin(alpha[i]) * d[i];
+            M_DH[i][2][0] = sin(theta[i]) * sin(alpha[i]);
+            M_DH[i][2][1] = cos(theta[i]) *  sin(alpha[i]);
+            M_DH[i][2][2] = cos(alpha[i]);
+            M_DH[i][2][3] = cos(alpha[i]) * d[i];
+            M_DH[i][3][0] = 0;
+            M_DH[i][3][1] = 0;
+            M_DH[i][3][2] = 0;
+            M_DH[i][3][3] = 1;
+        }
+        for(int i=0;i<6;i++)
+        {
+            for(int j=0;j<4;j++)
+            {
+                for(int k=0;k<4;k++)
+                {
+                    std::cout << M_DH[i][j][k] << "\t\t";
+                }
+                std::cout << "\n";
+            }
+            std::cout << "\n\n\n";
+        }
+
+        /*
+        for(int i=0;i<10;i++)
+        {
+            cos(theta[i]), -sin(theta[i]), 0, a[i],
+            sin(theta[i]) * cos(alpha[i]), cos(theta[i]) *  cos(alpha[i]), -sin(alpha[i]), -sin(alpha[i]) * d[i],
+            sin(theta[i]) * sin(alpha[i]), cos(theta[i]) *  sin(alpha[i]), cos(alpha[i]), cos(alpha[i]) * d[i],
+            0, 0, 0, 1,
+        }
+
+        std::cout << "Asignando tabla en objetos de la clase Matriz4x4" << std::endl;
+        T01 = M_DH;
+        std::cout << T01;
+        T12 = M_DH;
+        std::cout << T12;
+        T23 = M_DH;
+        std::cout << T23;
+        T34 = M_DH;
+        std::cout << T34;
+        T45 = M_DH;
+        std::cout << T45;
+        T56 = M_DH;
+        std::cout << T56;
+        T02 = T01*T12;
+        std::cout << T02;
+        T03 = T02*T23;
+        std::cout << T03;
+        T04 = T03*T34;
+        std::cout << T04;
+        T05 = T04*T45;
+        std::cout << T05;
+        T06 = T05*T56;
+        std::cout << "\nEsta es la chida" << std::endl;
+        std::cout << T06;
+        float *myarray = T06.ravel();
+        for(int i=0;i<16;i++)
+            std::cout << myarray[i] << " ";
+        delete[] myarray;
+        */
+    }
 
     void Robot::imprimirDatos()
     {

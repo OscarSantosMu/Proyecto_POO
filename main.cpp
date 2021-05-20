@@ -9,7 +9,21 @@ int main()
     float valor;
     Robot robot;
 
-    robot.imprimirDatos();
+    robot.T01.ravel();
+    cout << endl;
+    robot.T02.ravel();
+    cout << endl;
+    robot.T03.ravel();
+    cout << endl;
+    robot.T04.ravel();
+    cout << endl;
+    robot.T05.ravel();
+    cout << endl;
+    robot.T06.ravel();
+
+
+
+    /*robot.imprimirDatos();
 
     valor = robot.getPesoTotal();
     cout << "Peso total: " << valor << endl;
@@ -23,6 +37,6 @@ int main()
     m3 = m1*m2;
     cout << m3;
 
-
+    */
     return 0;
 }

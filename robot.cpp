@@ -75,6 +75,22 @@ namespace rbt
         std::cout << T45;
         T56 = M_DH;
         std::cout << T56;
+        T02 = T01*T12;
+        std::cout << T02;
+        T03 = T02*T23;
+        std::cout << T03;
+        T04 = T03*T34;
+        std::cout << T04;
+        T05 = T04*T45;
+        std::cout << T05;
+        T06 = T05*T56;
+        std::cout << "\nEsta es la chida" << std::endl;
+        std::cout << T06;
+        //float *myarray = T06.ravel();
+        //for(int i=0;i<16;i++)
+            //std::cout << myarray[i] << " ";
+        //delete[] myarray;
+
     }
 
     Robot::Robot(int _numEslabones, float _tamanio1, float _tamanio2, float _tamanio3,float _tamanio4, float _tamanio5, float _tamanio6,
@@ -225,6 +241,23 @@ namespace rbt
         }
         mat += 1;
         return temp;
+    }
+
+    float* Matriz4x4::ravel()
+    {
+        float *arr = new float[4];
+        int k=0;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                arr[k] = M[i][j];
+                k++;
+            }
+        }
+        for(int i=0;i<16;i++)
+            std::cout << arr[i] << " ";
+        return arr;
     }
 
     std::ostream & operator << (std::ostream &o, const Matriz4x4 &mat)

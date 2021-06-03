@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1620508765 source:d:\fimee\tareas\8vo semestre\programación orientada a objetos\proyecto final\poo_proyectofinal_etapa1\robot.cpp
+	"robot.h"
+	<iostream>
+
+1620508765 d:\fimee\tareas\8vo semestre\programación orientada a objetos\proyecto final\poo_proyectofinal_etapa1\robot.h
+	<iostream>
+
+1620508970 source:d:\fimee\tareas\8vo semestre\programación orientada a objetos\proyecto final\poo_proyectofinal_etapa1\main.cpp
+	<iostream>
+	"robot.h"
+
+1622511575 source:d:\fimee\tareas\8vo semestre\programación orientada a objetos\proyecto final\poo_proyectofinal\main.cpp
+	<GLUT/glut.h>
+	<windows.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<vector>
+	"getGeometryInput.h"
+	<iostream>
+	"robot.h"
+
+1622494001 d:\fimee\tareas\8vo semestre\programación orientada a objetos\proyecto final\poo_proyectofinal\robot.h
+	<iostream>
+
+1622511360 source:d:\fimee\tareas\8vo semestre\programación orientada a objetos\proyecto final\poo_proyectofinal\robot.cpp
+	"robot.h"
+	<iostream>
+	<cmath>
+
+1621482411 source:d:\fimee\tareas\8vo semestre\programación orientada a objetos\proyecto final\poo_proyectofinal\getgeometryinput.cpp
+	"getGeometryInput.h"
+
+1621482404 d:\fimee\tareas\8vo semestre\programación orientada a objetos\proyecto final\poo_proyectofinal\getgeometryinput.h
+	<iostream>
+	<fstream>
+	<vector>
+	<cmath>
+	<cstdlib>
+
+1622511575 source:d:\fimee\tareas\8vo semestre\programación orientada a objetos\proyecto final\poo_proyectofinal\src\consola\main.cpp
+	<GLUT/glut.h>
+	<windows.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<vector>
+	"getGeometryInput.h"
+	<iostream>
+	"robot.h"
+
+1621482404 d:\fimee\tareas\8vo semestre\programación orientada a objetos\proyecto final\poo_proyectofinal\src\consola\getgeometryinput.h
+	<iostream>
+	<fstream>
+	<vector>
+	<cmath>
+	<cstdlib>
+
+1622603051 d:\fimee\tareas\8vo semestre\programación orientada a objetos\proyecto final\poo_proyectofinal\src\consola\robot.h
+	<iostream>
+
+1622685029 source:d:\fimee\tareas\8vo semestre\programación orientada a objetos\proyecto final\poo_proyectofinal\src\consola\robot.cpp
+	"robot.h"
+	<iostream>
+	<cmath>
+

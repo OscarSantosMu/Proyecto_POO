@@ -21,6 +21,10 @@ La librería funciona para uso de consola y uso con OpenGl.
 El código fue elaborado por los siguientes integrantes de equipo:
 
 Jesús Ojeda
+
 Crhistian Aguirre
+
 Javier Garza
+
 Y un servidor
+

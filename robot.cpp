@@ -4,28 +4,24 @@
 
 namespace rbt
 {
-    Robot::Robot()
+    Robot::Robot():alpha( {-90*PI/180, 0, -90*PI/180, 90*PI/180, -90*PI/180, 0} ), a( {0, L2, L3, 0, 0, 0} ), d( {L1, 0, 0, L4, 0, L6} )
     {
         numEslabones = 6;
-        L1 = 2.90; // m
-        L2 = 2.70; // m
-        L3 = 0.70; // m
-        L4 = 3.02; // m
-        L5 = 0.0; // m
-        L6 = 0.72; // m
+
         th1 = 0;
         th2 = 0;
         th3 = 0;
         th4 = 0;
         th5 = 0;
         th6 = 0;
+
         pesoTotal = 2000; // kg
         color = "gris";
         material = "acero";
-        static float alpha[6] = {0*PI/180, 0, -90*PI/180, 90*PI/180, -90*PI/180, 0};
-        static float a[6] = {0, L2, L3, 0, 0, 0};
-        static float d[6] = {L1, 0, 0, L4, 0, L5};
-        static float theta[6] = {th1*PI/180, th2*PI/180, th3*PI/180, th4*PI/180, th5*PI/180, th6*PI/180};
+        //float alpha[6] = {-90*PI/180, 0, -90*PI/180, 90*PI/180, -90*PI/180, 0};
+        //float a[6] = {0, L2, L3, 0, 0, 0};
+        //float d[6] = {L1, 0, 0, L4, 0, L5};
+        float theta[6] = {th1*PI/180, (th2-90)*PI/180, th3*PI/180, th4*PI/180, th5*PI/180, (th6+180)*PI/180};
 
         for(int i=0;i<6;i++)
         {
@@ -135,10 +131,9 @@ namespace rbt
 
     void Robot::setMaterial(std::string _material){material = _material;}
 
-    void actualizarPosicion()
+    void Robot::actualizarPosicion()
     {
-        /*
-        theta[6] = {th1*PI/180, th2*PI/180, th3*PI/180, th4*PI/180, th5*PI/180, th6*PI/180};
+        float theta[6] = {th1*PI/180, (th2-90)*PI/180, th3*PI/180, th4*PI/180, th5*PI/180, (th6+180)*PI/180};
         for(int i=0;i<6;i++)
         {
             M_DH[i][0][0] = cos(theta[i]);
@@ -179,8 +174,8 @@ namespace rbt
             sin(theta[i]) * sin(alpha[i]), cos(theta[i]) *  sin(alpha[i]), cos(alpha[i]), cos(alpha[i]) * d[i],
             0, 0, 0, 1,
         }
-
-        std::cout << "Asignando tabla en objetos de la clase Matriz4x4" << std::endl;
+        */
+        std::cout << "Reasignando tabla en objetos de la clase Matriz4x4" << std::endl;
         T01 = M_DH;
         std::cout << T01;
         T12 = M_DH;
@@ -204,11 +199,11 @@ namespace rbt
         T06 = T05*T56;
         std::cout << "\nEsta es la chida" << std::endl;
         std::cout << T06;
-        float *myarray = T06.ravel();
-        for(int i=0;i<16;i++)
-            std::cout << myarray[i] << " ";
-        delete[] myarray;
-        */
+        //float *myarray = T06.ravel();
+        //for(int i=0;i<16;i++)
+            //std::cout << myarray[i] << " ";
+        //delete[] myarray;
+
     }
 
     void Robot::imprimirDatos()
@@ -254,11 +249,12 @@ namespace rbt
 
     Matriz4x4::~Matriz4x4()
     {
+        /*
         for(int i=0;i<m;i++){
             delete M[i];
         }
         delete M;
-        std::cout << "Libera memoria" << std::endl;
+        std::cout << "Libera memoria" << std::endl;*/
     }
 
     Matriz4x4 Matriz4x4::operator+ (Matriz4x4 obj1)
@@ -290,11 +286,13 @@ namespace rbt
         n = obj1.n;
         m = obj1.m;
         //M = obj1.M;
+
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                M[i][j] = obj1.M[i][j];
             }
         }
+
 
         /// Nos sirve para regresar y poder hacer múltiples igualaciones
         temp.n = obj1.n;
@@ -328,19 +326,24 @@ namespace rbt
                temp.M[i][j] = DH[mat][i][j];
             }
         }
+        std::cout << mat << std::endl;
         mat += 1;
+        if(mat==6)
+        {
+            mat = 0;
+        }
         return temp;
     }
 
-    float* Matriz4x4::ravel()
+    float* Matriz4x4::ravel_transpose()
     {
-        float *arr = new float[4];
+        float *arr = new float[16];
         int k=0;
         for(int i=0;i<n;i++)
         {
             for(int j=0;j<m;j++)
             {
-                arr[k] = M[i][j];
+                arr[k] = M[j][i];
                 k++;
             }
         }

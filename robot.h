@@ -21,7 +21,7 @@ namespace rbt
         Matriz4x4 operator= (Matriz4x4 obj1);
         Matriz4x4 operator* (Matriz4x4 obj1);
         Matriz4x4 operator= (float DH[6][6][6]);
-        float *ravel();
+        float *ravel_transpose();
         friend std::ostream & operator << (std::ostream &o, const Matriz4x4 &mat);
         friend std::istream & operator >> (std::istream &i, const Matriz4x4 &mat);
     };
@@ -30,10 +30,19 @@ namespace rbt
     {
     protected:
         int numEslabones;
-        float L1, L2, L3, L4, L5, L6;
+        float L1 = 2.90; // m
+        float L2 = 2.70; // m
+        float L3 = 0.70; // m
+        float L4 = 3.02; // m
+        float L5 = 0.0; // m
+        float L6 = 0.72; // m
         float th1, th2, th3, th4, th5, th6;
         float pesoTotal;
         float M_DH[6][6][6];
+        float alpha[6];
+        float a[6];
+        float d[6];
+        float theta[6];
 
         std::string color;
         std::string material;

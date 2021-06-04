@@ -425,6 +425,12 @@ const GLfloat high_shininess[] = { 100.0f };
 
 void regresar_home()
 {
+    th1f=0;
+    th2f=0;
+    th3f=0;
+    th4f=0;
+    th5f=0;
+    th6f=0;
     robot.setTh1(0);
     robot.setTh2(0);
     robot.setTh3(0);

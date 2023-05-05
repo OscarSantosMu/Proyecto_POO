@@ -2,7 +2,7 @@
 
 > Programación de un Robot de 6 grados de libertad utilizando una clase Robot, una clase Matriz y OpenGL
 
-<video src="static/mp4/demo.mp4" controls title="Demo"></video>
+https://user-images.githubusercontent.com/38818848/236541138-a3a1f37d-9d8e-48e6-863a-e631b529d588.mp4
 
 ## Requisitos
 
